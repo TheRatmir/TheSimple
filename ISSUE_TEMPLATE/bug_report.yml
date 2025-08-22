@@ -1,0 +1,36 @@
+name: "Сообщение об ошибке в риге"
+description: "Подробно опишите проблему, с которой столкнулись"
+labels: ["bug", "rig"]
+body:
+  - type: textarea
+    id: error_description
+    attributes:
+      label: "Описание ошибки"
+      description: "Максимально подробно опишите суть проблемы"
+      placeholder: |
+        • Какая часть рига работает некорректно?
+        • Как именно проявляется ошибка?
+        • В каких условиях возникает проблема?
+    validations:
+      required: true
+
+  - type: textarea
+    id: error_cause
+    attributes:
+      label: "Что вызывает ошибку"
+      description: "Опишите действия, приводящие к ошибке"
+      placeholder: |
+        • Конкретные шаги для воспроизведения
+        • Какие параметры/контроллеры задействованы
+        • Особые условия, при которых возникает
+    validations:
+      required: true
+
+  - type: textarea
+    id: media
+    attributes:
+      label: "Скриншот/видео ошибки"
+      description: "Прикрепите файлы или укажите ссылки (обязательно)"
+      placeholder: "Перетащите файлы или вставьте URL"
+    validations:
+      required: true
