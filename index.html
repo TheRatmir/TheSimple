@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>TheSimple — Майнкрафт риг для Blender</title>
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --accent-from: #ef4444; /* Красный вместо синего */
+        --accent-to: #7c3aed; /* Фиолетовый можно оставить или поменять */
+    }
+
+    body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background: linear-gradient(180deg, #000 0%, #110303 60%);
+        background-repeat: no-repeat; /* 🚫 запрещаем повторение */
+        background-attachment: fixed; /* 📌 фон фиксируется и растягивается */
+        background-size: cover; /* 🔥 растягиваем фон на всю страницу */
+        color: #e6eef8;
+        min-height: 100vh; /* минимум вся высота экрана */
+    }
+
+
+    .bg-glow {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(40rem 20rem at 10% 10%, rgba(239,68,68,0.08), transparent 10%), radial-gradient(36rem 20rem at 90% 30%, rgba(124,58,237,0.06), transparent 10%);
+        filter: blur(36px) saturate(120%);
+    }
+
+        .btn-primary {
+            background: linear-gradient(90deg,var(--accent-from),var(--accent-to));
+            color: white;
+            box-shadow: 0 8px 30px rgba(124,58,237,0.18);
+            transition: transform .18s ease, filter .18s ease;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-3px) scale(1.01);
+                filter: brightness(1.03);
+            }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.06);
+            color: #dbeafe;
+            transition: background .15s ease, transform .15s ease;
+        }
+
+            .btn-ghost:hover {
+                background: rgba(255,255,255,0.03);
+                transform: translateY(-2px);
+            }
+
+        .feature-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.03);
+            backdrop-filter: blur(6px);
+            border-radius: 12px;
+            padding: 10px;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 18px 40px rgba(6,8,20,0.6);
+            }
+
+        .glass-pill {
+            background: rgba(255,255,255,0.03);
+            border-radius: 999px;
+            padding: .35rem .6rem;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .tiny-muted {
+            color: #9fb3d8;
+            font-size: 13px;
+        }
+
+        #features .feature-card {
+            transition: none;
+            cursor: default;
+        }
+
+            #features .feature-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <!-- Шапка -->
+    <header class="site-header fixed left-0 right-0 top-4 max-w-6xl mx-auto z-50 transition-all rounded-xl" id="siteHeader">
+        <div class="inner backdrop-blur-md bg-[rgba(8,10,15,0.25)] border border-white/5 flex items-center justify-between p-3 rounded-xl">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl p-1 bg-gradient-to-br from-red-600 to-indigo-600 shadow-lg flex items-center justify-center font-bold">TS</div>
+                <div>
+                    <div class="font-bold">TheSimple</div>
+                    <div class="tiny-muted">Minecraft rig • Blender 4.2+</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-6 items-center tiny-muted">
+                </nav>
+                <a class="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm" id="download-copy">
+                    ⬇ Скачать
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="pt-28">
+
+        <!-- Герой -->
+        <section class="mx-auto max-w-4xl px-4 mb-12 flex flex-col items-center text-center gap-6">
+
+            <!-- Превью -->
+            <figure class="rounded-2xl overflow-hidden border border-white/5 shadow-xl bg-gradient-to-br from-gray-900/60 to-gray-800/30 max-w-2xl w-full">
+                <img alt="TheSimple Preview" class="w-full h-auto block" src="TheSimple_Preview.webp" />
+            </figure>
+
+            <!-- Заголовок -->
+            <h1 class="text-3xl md:text-4xl font-extrabold">TheSimple — Майнкрафт риг для Blender</h1>
+            <p class="tiny-muted">Простой, но хороший Minecraft риг для Blender 4.2+</p>
+
+            <!-- Функции -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-4xl" id="features">
+                <div class="feature-card flex flex-row items-center justify-center gap-3 p-3 w-full">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-red-400 bg-black/30 text-lg">🙂</div>
+                    <div class="text-center">
+                        <div class="font-semibold text-sm">Риг лица</div>
+                        <div class="tiny-muted text-xs">В Simple стиле</div>
+                    </div>
+                </div>
+                <div class="feature-card flex flex-row items-center justify-center gap-3 p-3 w-full">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-red-400 bg-black/30 text-lg">✋</div>
+                    <div class="text-center">
+                        <div class="font-semibold text-sm">Руки</div>
+                        <div class="tiny-muted text-xs">Поддержка 4×4 и 4×3 форматов</div>
+                    </div>
+                </div>
+                <div class="feature-card flex flex-row items-center justify-center gap-3 p-3 w-full">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-red-400 bg-black/30 text-lg">🖐️</div>
+                    <div class="text-center">
+                        <div class="font-semibold text-sm">3 вида изгиба</div>
+                        <div class="tiny-muted text-xs">Для каждого найдется свой</div>
+                    </div>
+                </div>
+                <div class="feature-card flex flex-row items-center justify-center gap-3 p-3 w-full">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center text-red-400 bg-black/30 text-lg">🔁</div>
+                    <div class="text-center">
+                        <div class="font-semibold text-sm">FK/IK</div>
+                        <div class="tiny-muted text-xs">Гибкое управление руками и ногами</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопки -->
+            <div class="flex items-center justify-center gap-6 py-8">
+                <a class="btn-primary px-5 py-3 rounded-full font-semibold" href="https://github.com/TheRatmir/TheSimple/releases/tag/v1.9" id="download">
+                    ⬇ Скачать TheSimple (v1.0)
+                </a>
+                <a class="btn-ghost px-4 py-3 rounded-full" href="https://github.com/TheRatmir/TheSimple/issues/new?template=bug_report.yml">
+                    🐞 Сообщить об ошибке
+                </a>
+            </div>
+
+            <!-- Авторская панель справа снизу -->
+            <div aria-label="Автор рига — перейти по ссылке" class="fixed bottom-4 right-4 bg-[rgba(255,255,255,0.05)] border border-white/10 backdrop-blur-md rounded-xl shadow-lg flex items-center gap-3 px-5 py-2 cursor-pointer hover:bg-[rgba(255,255,255,0.1)] transition" onclick="window.location.href='https://theratmir.github.io/TheRatmir-Portfolio/'" role="button">
+                <img alt="Аватар автора" class="w-12 h-12 rounded-full object-cover border border-white/20" src="https://theratmir.github.io/TheRatmir-Portfolio/Images/Ava.webp">
+                <span class="text-white font-semibold select-none">Автор рига</span>
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const header = document.querySelector('#siteHeader');
+            const headerOffset = header.offsetHeight + parseInt(getComputedStyle(header).top) + 20; // подкорректируй 20, если надо
+            const targetID = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetID);
+
+            if (targetElement) {
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    // Берем ссылку с основной кнопки и присваиваем её второй кнопке
+    const mainButton = document.getElementById('download');
+    const copyButton = document.getElementById('download-copy');
+    copyButton.href = mainButton.href;
+</script>
+</html>
